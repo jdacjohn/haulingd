@@ -1,0 +1,1 @@
+<h1><a href="<?php echo htmlentities(PROJECT_URL); ?>/"><span><?php echo htmlentities(PROJECT_TITLE); ?></span></a></h1>

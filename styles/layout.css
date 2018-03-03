@@ -1,0 +1,258 @@
+/* Aditional visual styling for visual media */
+@media handheld, print, projection, screen, tv {
+	a, a:link {
+		color: #00c;
+		}
+	a:hover {
+		color: #00f;
+		}
+	a:visited {
+		color: #006;
+		}
+	a:active {
+		/* not specified */
+		}
+	.readonly {
+		background-color: #e6e6e6 !important;
+		color: #4c4c4c !important;
+		}
+	.req {
+		color: #ff9a00;
+		}
+}
+
+/* Positional and advanced styling for supporting visual media types */
+@media print, projection, screen, tv {
+	body {
+		background-color: #b0b9ac;
+		color: #000;
+		margin: 0;
+		padding: 0;
+		}
+	h1, h2, h3, h4, h5, h6 {
+		font-family: Calibri, "Trebuchet MS", Helvetica, Tahoma, sans-serif;
+		}
+	#box {
+		width: 760px;
+		margin: 0 auto;
+		/* padding: 2.5em 0 0 0; */ /* for absolute-positioned navigation div */
+		}
+	#header {
+		background-color: #7c8a75;
+		color: #fff;
+		margin: 0 0 10px 0;
+		padding: 0.6em;
+		-moz-border-radius: 8px;
+		}
+	#header * {
+		}
+	#header h1 {
+		}
+	#header h1 a {
+		color: #fff;
+		text-decoration: none;
+		}
+	#header h1 span, #tagline {
+		}
+	#bulletin {
+		}
+	#bulletin a {
+		}
+	#bulletin span {
+		}
+	#body {
+		}
+	#navigation {
+		background-color: #cad0c8;
+		color: #000;
+		line-height: 1.3em;
+		margin: 0 0 10px 0;
+		padding: 0.6em;
+		-moz-border-radius: 8px;
+		}
+	#navigation h2, #navigation h3, #navigation h4, #navigation h5, #navigation h6 {
+		display: none;
+		}
+	#navigation ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+		width: 100%;
+		}
+	#navigation ul ul {
+		display: none;
+		}
+	#navigation ul li {
+		display: inline;
+		font-size: 105%;
+		font-style: italic;
+		font-weight: bold;
+		margin: 0;
+		padding: 0 15px 0 0;
+		text-align: center;
+		}
+	#navigation ul li a {
+		color: #000;
+		text-decoration: none;
+		}
+	#navigation ul li a:hover {
+		color: #333;
+		}
+	#content {
+		background-color: #f2f3f1;
+		color: #000;
+		margin: 0 0 10px 0;
+		width: 760px;
+		-moz-border-radius: 8px;
+	}
+	#content h2 {
+		margin-top: 0;
+	}
+	#breadcrumb {
+        display: none;
+        /*
+		color: #333;
+		font-size: 80%;
+		margin: 0;
+		padding: 0.6em;
+        */
+	}
+	#breadcrumb a {
+		color: #333;
+	}
+	#breadcrumb a:hover {
+		color: #666;
+	}
+	#breadcrumb .breadcrumb_currentpage {
+		font-style: italic;
+	}
+	#column1 {
+		padding: 0.6em;
+	}
+	#column2 {
+	}
+	#footer {
+		font-size: 80%;
+		margin: 0;
+		}
+	#footer p {
+		color: #333;
+		margin: 0;
+		}
+	#footer a {
+		color: #333;
+		text-decoration: none;
+		}
+	#footer a:hover {
+		color: #fff;
+		}
+	#toolbar {
+		color: #333;
+		font-size: 80%;
+		margin: 0 auto;
+		width: 760px;
+		}
+	#toolbar a {
+		color: #333;
+		}
+	#toolbar a:hover {
+		color: #fff;
+		}
+	blockquote:before {
+		content: url(bq.gif);
+		padding-top: 1em;
+		margin-left: -30px;
+		padding-right: 7px;
+		}
+	head:first-child+body blockquote {
+		background-image: url(bq-reverse.gif);
+		background-repeat: no-repeat;
+		background-position: bottom right;
+		}
+	blockquote+cite {
+		border-top: 1px dotted #8a7579;
+		position: relative;
+		height: 2em;
+		vertical-align: top;
+		margin: -2em 30px 0 30px;
+		}
+	div.formElementSet {
+		padding: 0.3em 0;
+		}
+	div.formElementSet .fieldnote {
+		}
+	div.formElementSet .fieldlabel {
+		position: absolute;
+		font-weight: bold;
+		}
+	div.formElementSetText .text, div.formElementSetText .textarea, div.formElementSetText .textoptions {
+		margin-left: 12.5em;
+		width: 15em;
+		}
+	div.formElementSetText .textarea {
+		margin-left: 15.35em;
+		}
+	div.formElementSetText .textoption {
+		white-space: nowrap;
+		}
+	div.formElementSetDate {
+		margin-bottom: 0.4em;
+		}
+	div.formElementSetDateBox {
+		position: absolute;
+		display: inline;
+		margin-left: 8em;
+		white-space: nowrap;
+		width: 15em;
+		}
+	input.month, input.day {
+		width: 1.75em;
+		}
+	input.year {
+		width: 4em;
+		}
+	input[type="file"], input[type="password"], input[type="text"], textarea, select {
+		line-height: 1.3em;
+		border-top: 1px solid #7c7c7c;
+		border-left: 1px solid #c3c3c3;
+		border-right: 1px solid #c3c3c3;
+		border-bottom: 1px solid #ddd;
+		background-color: #fff;
+		background-image: url(fieldbg.gif);
+		background-repeat: repeat-x;
+		background-position: top left;
+		}
+	.clearer {
+		clear: both;
+		line-height: 0;
+		height: 0;
+		}
+	.float {
+		display: inline;
+		}
+	.float-left {
+		float: left;
+		}
+	.float-right {
+		float: right;
+		}
+}
+
+/* Overrides for print media */
+@media print {
+	#box {
+		width: 100%;
+		}
+	#header h1 {
+		top: 0;
+		width: 100%;
+		background-image: none;
+		}
+	#header h1 span {
+		display: inline;
+		}
+	#toolbar {
+		display: none;
+		}
+}

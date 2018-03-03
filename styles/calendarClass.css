@@ -1,0 +1,253 @@
+div.calendar_container {
+	font-size: 12px; 
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 5px auto;
+	}
+	table.calendar {
+		width: 95%;
+		border: 2px ridge;
+		border-collapse: collapse;
+		}
+
+		/* the top title & link row */
+		tr.calendar_title_row_top {
+			background-color: #e4e4e4;
+			}
+			tr.calendar_title_row_top td.calendar_previous_link {
+				}
+				tr.calendar_title_row_top td.calendar_previous_link a {
+					}
+					tr.calendar_title_row_top td.calendar_previous_link a span.link_arrows{
+						}
+					tr.calendar_title_row_top td.calendar_previous_link a span.link_month{
+						}
+					tr.calendar_title_row_top td.calendar_previous_link a span.link_year{
+						}
+			tr.calendar_title_row_top td.calendar_title {
+				font-size: 18px;
+				color: #666666;
+				text-align: center;
+				}
+				tr.calendar_title_row_top td.calendar_title span {
+					}
+			tr.calendar_title_row_top td.calendar_next_link {
+				text-align: right;
+				}
+				tr.calendar_title_row_top td.calendar_next_link a {
+					}
+					tr.calendar_title_row_top td.calendar_next_link a span.link_arrows{
+						}
+					tr.calendar_title_row_top td.calendar_next_link a span.link_month{
+						}
+					tr.calendar_title_row_top td.calendar_next_link a span.link_year{
+						}
+		/* the top column header (TH) row */
+		tr.calendar_header_row_top {
+			background-color: #e4e4e4;
+			text-align: center;
+			font-weight: bold;
+			}
+			tr.calendar_header_row_top th.calendar_column_0 {
+				}
+				tr.calendar_header_row_top th.calendar_column_0 span {
+					}
+			tr.calendar_header_row_top th.calendar_column_1 {
+				}
+				tr.calendar_header_row_top th.calendar_column_1 span {
+					}
+			tr.calendar_header_row_top th.calendar_column_2 {
+				}
+				tr.calendar_header_row_top th.calendar_column_2 span {
+					}
+			tr.calendar_header_row_top th.calendar_column_3 {
+				}
+				tr.calendar_header_row_top th.calendar_column_3 span {
+					}
+			tr.calendar_header_row_top th.calendar_column_4 {
+				}
+				tr.calendar_header_row_top th.calendar_column_4 span {
+					}
+			tr.calendar_header_row_top th.calendar_column_5 {
+				}
+				tr.calendar_header_row_top th.calendar_column_5 span {
+					}
+			tr.calendar_header_row_top th.calendar_column_6 {
+				}
+				tr.calendar_header_row_top th.calendar_column_6 span {
+					}
+			tr.calendar_header_row_top th.calendar_column_7 {
+				}
+				tr.calendar_header_row_top th.calendar_column_7 span {
+					}
+			tr.calendar_header_row_top th.calendar_column_8 {
+				}
+				tr.calendar_header_row_top th.calendar_column_8 span {
+					}
+		/* any week row */
+		tr.calendar_week_row {
+			}
+		/* week 1 row */
+		tr.calendar_week_1 {
+			}
+			tr.calendar_week_1 td.calendar_column_0 {
+				}
+			tr.calendar_week_1 td.calendar_column_1 {
+				}
+			tr.calendar_week_1 td.calendar_column_2 {
+				}
+			tr.calendar_week_1 td.calendar_column_3 {
+				}
+			tr.calendar_week_1 td.calendar_column_4 {
+				}
+			tr.calendar_week_1 td.calendar_column_5 {
+				}
+			tr.calendar_week_1 td.calendar_column_6 {
+				}
+			tr.calendar_week_1 td.calendar_column_7 {
+				}
+			tr.calendar_week_1 td.calendar_column_8 {
+				}
+				
+		/* week x row */
+		/* tr.calendar_week_n ... */
+		
+		th.calendar_cell { /* cell wrapper */
+			}
+		td.calendar_cell { /* cell wrapper */
+			}
+
+		td.calendar_day { /* date and non-date cells */
+			border-collapse: collapse;
+			border: 2px ridge;
+			margin: 0;
+			padding: 0;
+			height: 80px;
+			min-height: 80px;
+			overflow: visible;
+			text-align: left;
+			vertical-align: top;
+			}
+		
+		td.calendar_day_0 {/* for non-date filler cells */
+			background-color: #CCCCCC;
+			}
+			td.calendar_day_0 div.calendar_day_container { /* for non-date filler cells */
+				display: none;
+				}
+			
+		td.calendar_day_no_content { /* date cell with no content */
+			}
+
+		td.calendar_day_with_content { /* date cell with content */
+			}
+
+		div.calendar_day_container { /* inner wrapper for date cell */
+			}
+			div.calendar_day_date { /* outer wrapper for the day numbers (1, 2, 10, 20, etc) in a date cell*/
+				font-size: 10px;
+				color: #666;
+				margin-bottom: 5px;
+				width: 1.5em;
+				min-width: 1.5em;
+				height: 1.5em;
+				border-bottom: 1px solid #666;
+				border-right: 1px solid #666;
+				text-align: center;
+				vertical-align: middle;
+				}
+				div.calendar_day_date span { /* inner wrapper for the day numbers in a date cell */
+					}
+			div.calendar_day_content { /* outer wrapper for the content in a date cell */
+				}
+				div.calendar_day_content span { /* inner wrapper for the content in a date cell */
+					}
+
+		td.calendar_day_today { /* todays date cell */
+			border: 2px solid #CE0D54 !important;
+			}
+			td.calendar_day_today div.calendar_day_container { /* todays date cell */
+				color: #CE0D54 !important;
+				border-color: #CE0D54 !important;
+				}
+
+		/* pre & post week columns */
+		td.calendar_column_0, td.calendar_column_8, th.calendar_column_0, th.calendar_column_8 {
+			}
+
+		/* the bottom column header (TH) row */
+		tr.calendar_header_row_bottom {
+			display: none;
+			background-color: #e4e4e4;
+			text-align: center;
+			font-weight: bold;
+			}
+			tr.calendar_header_row_bottom th.calendar_column_0 {
+				}
+				tr.calendar_header_row_bottom th.calendar_column_0 span {
+					}
+			tr.calendar_header_row_bottom th.calendar_column_1 {
+				}
+				tr.calendar_header_row_bottom th.calendar_column_1 span {
+					}
+			tr.calendar_header_row_bottom th.calendar_column_2 {
+				}
+				tr.calendar_header_row_bottom th.calendar_column_2 span {
+					}
+			tr.calendar_header_row_bottom th.calendar_column_3 {
+				}
+				tr.calendar_header_row_bottom th.calendar_column_3 span {
+					}
+			tr.calendar_header_row_bottom th.calendar_column_4 {
+				}
+				tr.calendar_header_row_bottom th.calendar_column_4 span {
+					}
+			tr.calendar_header_row_bottom th.calendar_column_5 {
+				}
+				tr.calendar_header_row_bottom th.calendar_column_5 span {
+					}
+			tr.calendar_header_row_bottom th.calendar_column_6 {
+				}
+				tr.calendar_header_row_bottom th.calendar_column_6 span {
+					}
+			tr.calendar_header_row_bottom th.calendar_column_7 {
+				}
+				tr.calendar_header_row_bottom th.calendar_column_7 span {
+					}
+			tr.calendar_header_row_bottom th.calendar_column_8 {
+				}
+				tr.calendar_header_row_bottom th.calendar_column_8 span {
+					}
+
+		/* the bottom title & link row */
+		tr.calendar_title_row_bottom {
+			display: none;
+			background-color: #e4e4e4;
+			}
+			tr.calendar_title_row_bottom td.calendar_previous_link {
+				}
+				tr.calendar_title_row_bottom td.calendar_previous_link a {
+					}
+					tr.calendar_title_row_bottom td.calendar_previous_link a span.link_arrows{
+						}
+					tr.calendar_title_row_bottom td.calendar_previous_link a span.link_month{
+						}
+					tr.calendar_title_row_bottom td.calendar_previous_link a span.link_year{
+						}
+			tr.calendar_title_row_bottom td.calendar_title {
+				font-size: 18px;
+				color: #666666;
+				text-align: center;
+				}
+				tr.calendar_title_row_bottom td.calendar_title span {
+					}
+			tr.calendar_title_row_bottom td.calendar_next_link {
+				text-align: right;
+				}
+				tr.calendar_title_row_bottom td.calendar_next_link a {
+					}
+					tr.calendar_title_row_bottom td.calendar_next_link a span.link_arrows{
+						}
+					tr.calendar_title_row_bottom td.calendar_next_link a span.link_month{
+						}
+					tr.calendar_title_row_bottom td.calendar_next_link a span.link_year{
+						}

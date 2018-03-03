@@ -1,0 +1,1 @@
+<p>This page is also available in a <a href="<?php echo htmlentities(addURLParam('print',1)); ?>">text version</a> suitable for printing.</p>

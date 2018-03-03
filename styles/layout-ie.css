@@ -1,0 +1,42 @@
+/* Aditional visual styling for visual media on ie < 7 */
+@media handheld, print, projection, screen, tv {
+	table.dataForm, table.dataSet {
+		width: 99%;
+		}
+}
+
+/* Positional and advanced styling for supporting visual media types on ie < 7 */
+@media print, projection, screen, tv {
+	cite {
+		border-top: 1px dotted #8a7579;
+		position: relative;
+		top: -2em;
+		margin: 0 30px;
+		}
+	div.formElementSetDate {
+		margin-bottom: 0.8em;
+		}
+	div.formElementSetDateBox {
+		margin-left: 7.75em;
+		}
+	input.text, input.month, input.day, input.year, textarea, select { 
+		line-height: 1.3em;
+		border-top: 1px solid #7c7c7c;
+		border-left: 1px solid #c3c3c3;
+		border-right: 1px solid #c3c3c3;
+		border-bottom: 1px solid #ddd;
+		background-color: #fff;
+		background-image: url(fieldbg.gif);
+		background-repeat: repeat-x;
+		background-position: top left;
+		}
+	.clearer { /* Last 2 characters of body text duplicated in IE6.0 - http://www.sitepoint.com/forums/archive/index.php/t-206659.html */
+		height: 1px;
+		overflow: hidden;
+		margin-top: -1px;
+		}
+}
+
+/* Overrides for print media on ie < 7 */
+@media print {
+}

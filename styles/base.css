@@ -1,0 +1,303 @@
+/*
+CSS MEDIA TYPES
+++ all
+		Suitable for all devices.
+-- aural
+		Intended for speech synthesizers. See the section on aural style sheets for details.
+-- braille
+		Intended for braille tactile feedback devices.
+-- embossed
+		Intended for paged braille printers.
+++ handheld
+		Intended for handheld devices (typically small screen, monochrome, limited bandwidth).
+++ print
+		Intended for paged, opaque material and for documents viewed on screen in print preview mode. Please consult the section on paged media for information about formatting issues that are specific to paged media.
+++ projection
+		Intended for projected presentations, for example projectors or print to transparencies. Please consult the section on paged media for information about formatting issues that are specific to paged media.
+++ screen
+		Intended primarily for color computer screens.
+++ tty
+		Intended for media using a fixed-pitch character grid, such as teletypes, terminals, or portable devices with limited display capabilities. Authors should not use pixel units with the "tty" media type.
+++ tv
+		Intended for television-type devices (low resolution, color, limited-scrollability screens, sound available).
+*/
+
+/* Basic styling for all visual media */
+@media all {
+	body {
+		background-color: #fff;
+		color: #000;
+		font-size: 86%;
+		}
+	* {
+		font-size: 1em;
+		}
+}
+
+/* Set up the base fonts for the various media */
+@media handheld, print, projection, screen {
+	/* For the majority of visual media */
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+		}
+	h1, h2, h3, h4, h5, h6 {
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		}
+}
+@media tv {
+	/* For lo-res media */
+	body {
+		font-family: "Times New Roman", Times, serif;
+		}
+}
+@media tty {
+	/* For terminal and fixed-font media */
+	body {
+		font-family: "Courier New", Courier, mono;
+		}
+}
+
+/* Text sizing for all visual media */
+@media handheld, print, projection, screen, tty, tv {
+	h1 {
+		font-size: 200%;
+		}
+	h2 {
+		font-size: 150%;
+		}
+	h3 {
+		font-size: 125%;
+		}
+	h4 {
+		font-size: 115%;
+		}
+	h5 {
+		font-size: 100%;
+		}
+	h6 {
+		font-size: 85%;
+		}
+}
+
+/* Visual styling for all visual media */
+@media handheld, print, projection, screen, tv {
+	blockquote {
+		margin: 1em 0;
+		padding: 0 30px 1em 30px;
+		}
+	cite {
+		display: block;
+		font-style: italic;
+		}
+	dd {
+		margin-bottom: 1em;
+		}
+	dt {
+		font-weight: bold;
+		}
+	form {
+		margin: 0;
+		padding: 0;
+		}
+	h1 {
+		margin: 0;
+		padding: 0;
+		}
+	h2, h3, h4, h5, h6 {
+		margin: 1em 0 0 0;
+		padding: 0;
+		}
+	label {
+		padding: 0.2em 0.3em 0.3em 0;
+		}
+	p {
+		margin: 0 0 1em 0;
+		}
+	table.dataForm {
+		margin-left: -1px;
+		width: 100%;
+		}
+	table.dataForm th {
+		font-weight: bold;
+		padding-right: 1em;
+		}
+	table.dataForm tr.headerRow {
+		}
+	table.dataForm tr.lineItem1 {
+		background-color: #fff;
+		}
+	table.dataForm tr.lineItem2 {
+		background-color: #e7e7e7;
+		}
+	table.dataForm tr.lineItemAlt1 {
+		background-color: #fff;
+		}
+	table.dataForm tr.lineItemAlt2 {
+		background-color: #e7e7e7;
+		}
+	table.dataSet {
+		border: 1px solid #dcdcdc;
+		border-collapse: collapse;
+		margin-left: -1px;
+		width: 100%;
+		}
+	table.dataSet td  {
+		padding: 0.25em;
+		border: 1px solid #dcdcdc;
+		border-collapse: collapse;
+		}
+	table.dataSet th {
+		font-weight: bold;
+		padding: 0.25em;
+		border: 1px solid #dcdcdc;
+		border-collapse: collapse;
+		}
+	table.dataSet tr.blankLine td {
+		border-left: 1px solid white;
+		border-right: 1px solid white;
+		border-bottom: 1px solid white;
+		font-size: 50%;
+		}
+	table.dataSet tr.groupRow {
+		background-color: #acccfa;
+		color: #000;
+		font-weight: bold;
+		text-align: left;
+		}
+	table.dataSet tr.groupRow a {
+		color: #000000 !important;
+		}
+	table.dataSet tr.headerRow {
+		background-color: #fff;
+		color: #000;
+		font-weight: bold;
+		text-align: center;
+		}
+	table.dataSet tr.headerRow a {
+		color: #000000 !important;
+		}
+	table.dataSet tr.lineItem1 {
+		background-color: #fff;
+		}
+	table.dataSet tr.lineItem2 {
+		background-color: #e7e7e7;
+		}
+	table.dataSet tr.lineItemAlt1 {
+		background-color: #fff;
+		}
+	table.dataSet tr.lineItemAlt2 {
+		background-color: #e7e7e7;
+		}
+	table.dataSet tr.optionsRow {
+		}
+	table.dataSet tr.optionsRow input {
+		}
+	table.dataSet tr.optionsRow select {
+		}
+	table.dataSet tr.recordsetError {
+		text-align: center;
+		}
+	table.dataSet tr.recordsetPaging {
+        text-align: center;
+		color: #555555;
+		}
+	table.dataSet tr.recordsetPaging .recordsetPagingComponent {
+		margin: 0 0.75em;
+		}
+	table.dataSet tr.recordsetPaging .recordsetPagingComponent span {
+        border: 1px solid transparent;
+		padding: 0.12em 0.5em;
+		}
+	table.dataSet tr.recordsetPaging .recordsetPagingComponent a {
+        border: 1px solid #555555;
+		color: #555555 !important;
+        text-decoration: none !important;
+		padding: 0.12em 0.5em;
+		}
+	table.dataSet tr.recordsetPaging .recordsetPagingComponent a:hover {
+        border-color: #888888;
+		}
+	.define {
+		border-bottom: 1px dashed #333;
+		cursor: help;
+		}
+    .dim {
+		color: #555555;
+        }
+	.error {
+		color: #ff0300;
+		}
+	.error a {
+		color: #ff0300 !important;
+		text-decoration: underline !important;
+		}
+	.fieldnote {
+		display: block;
+		font-size: 80%;
+		color: #555555;
+		}
+	.footnote {
+		font-size: 80%;
+		color: #555555;
+		}
+	.hidden {
+		display: none;
+		}
+	.highlight {
+		background-color: #ffffe0;
+		border-bottom: 1px solid #ffff7a;
+		color: #000;
+		padding: 0 0.3em;
+		}
+	.large {
+		font-size: 110%;
+		}
+	.notice, .warning {
+		border: 1px solid #000;
+		padding: 0.5em;
+		text-align: justify;
+		margin-bottom: 1em;
+		}
+	.notice {
+		background-color: #ffffe0;
+		}
+	.warning {
+		background-color: #ffe0e1;
+		}
+	.req {
+		font-weight: bold;
+		}
+	.small {
+		font-size: 85%;
+		}
+	.x-large {
+		font-size: 125%;
+		}
+	.x-small {
+		font-size: 68%;
+		}
+	.xx-large {
+		font-size: 200%;
+		}
+}
+
+/* Aditional visual styling for non-print visual media */
+@media handheld, projection, screen, tv {
+	a, a:link, a:hover, a:visited, a:active {
+		/* specify color in layout.css */
+		}
+	.define {
+		border-bottom: 1px dashed #333;
+		cursor: help;
+		}
+	.not-for-screen {
+		display: none;
+		}
+	.readonly {
+		/* specify color in layout.css (mark "!important") */
+		cursor: default !important;
+		}
+	.req {
+		/* specify color in layout.css */
+		}
+}

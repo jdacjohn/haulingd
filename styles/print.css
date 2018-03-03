@@ -1,0 +1,14 @@
+/* Overrides for print media */
+body * { 
+	font-family: "Times New Roman", Times, serif;
+}
+a {
+	color: #000000;
+	text-decoration: none;
+}
+#navigation, #breadcrumb, #toolbar {
+	display: none;
+}
+.not-for-print {
+	display: none;
+}

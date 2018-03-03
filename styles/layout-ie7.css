@@ -1,0 +1,17 @@
+/* Aditional visual styling for visual media on ie 7 */
+@media handheld, print, projection, screen, tv {
+	table.dataForm, table.dataSet {
+		/* width: 99%; */
+		}
+}
+
+/* Positional and advanced styling for supporting visual media types on ie 7 */
+@media projection, screen, tv {
+	div.formElementSetText .textarea {
+		margin-left: 12.5em;
+		}
+}
+
+/* Overrides for print media on ie 7 */
+@media print {
+}

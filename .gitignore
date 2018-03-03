@@ -1,0 +1,19 @@
+# Dreamweaver Directories
+_mm
+_mmServerScripts
+_notes
+
+# Site sensitive
+_config
+configs
+.htpasswds
+
+# General
+error_log*
+.well-known
+tests
+.ftpquota
+*.zip
+*.csv
+FTP_release_haulingdepot.doc
+HDPremiumLeads.pdf
