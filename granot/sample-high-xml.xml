@@ -1,0 +1,40 @@
+<xdoc>
+<AAA>
+<BBB>
+<custcode type="string" size="20">EQUATEMED</custcode>
+<leadno type="string" size="20">~</leadno>
+<servtypeid type="i4" size="4">102</servtypeid>
+<firstname type="string" size="100">Lon</firstname>
+<lastname type="string" size="100">Yo</lastname>
+<ocity type="string" size="30">Mason</ocity>
+<ostate type="string" size="20">OH</ostate>
+<ozip type="string" size="20">45040</ozip>
+<ocountry type="string" size="30">~</ocountry>
+<dcity type="string" size="30">El Paso</dcity>
+<dstate type="string" size="20">TX</dstate>
+<dzip type="string" size="20">79905</dzip>
+<dcountry type="string" size="30">~</dcountry>
+<weight type="i4" size="4">3500</weight>
+<volume type="i4" size="4">538</volume>
+<movesize type="string" size="50">1Bedrooms</movesize>
+<notes type="string" size="2147483647">~</notes>
+<movedte type="dateTime" size="8">2018-05-25T00:00:00</movedte>
+<movedte2 type="dateTime" size="8">2001-01-01T00:00:00</movedte2>
+<email type="string" size="50">lwcuevas@hotmail.com</email>
+<phone1 type="string" size="20">7144792636</phone1>
+<phone2 type="string" size="20">~</phone2>
+<cell type="string" size="20">~</cell>
+<source type="string" size="70">~</source>
+<mincount type="i4" size="4">0</mincount>
+<maxcount type="i4" size="4">0</maxcount>
+<soldcount type="i4" size="4">0</soldcount>
+<moverref type="string" size="2147483647">~</moverref>
+<repnotes type="string" size="2147483647">~</repnotes>
+<others1txt type="string" size="50">~</others1txt>
+<others1amt type="float" size="10" precision="2">0</others1amt>
+<others2txt type="string" size="50">~</others2txt>
+<others2amt type="float" size="10" precision="2">0</others2amt>
+<label type="string" size="20">EquateMedia-Standard</label>
+</BBB>
+</AAA>
+</xdoc>

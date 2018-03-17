@@ -135,8 +135,21 @@ foreach ($arrVars as $var) {
 }
 if($gDebug) printvar($arrVals, 'arrVals');
 
+foreach ($arrVals as $key => $val) {
+  echo $key . "=>". $val . "<br />";
+}
+if ($arrVals['moving']) {
+  echo "<br />They want a home moving quote.<br />";
+  //include('./granot/GranotLeadPost.php');
+  //$movingLeads = new GranotLeadPost(LEADS_API_ID, MOVER_REF, $arrVals);
+
+} else {
+  echo "<br />They DO NOT want a home moving quote.<br />";
+}
+
 if (!isset($arrErr)) $arrErr = array();
 if (getParam('frmSubmit') == 'true') {
+  die('Die a horrible death');
 	//check req'd data
 	if (strlen(trim($arrVals['customername'])) == 0) {
 		$arrErr[] = form_error('Please enter the name of the customer.', 'customername', 'customer');

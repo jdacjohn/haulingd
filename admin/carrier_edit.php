@@ -1,7 +1,7 @@
 <?php require_once('../_includes/project.inc.php'); ?>
 <?php
 require_login();
-
+$gDebug = true;
 $db = &connectToDB();
 if($gDebug) $db->debug = true;
 
@@ -30,7 +30,7 @@ $arrVars = array(
 	newFieldArray('open', 'int'),
 	newFieldArray('covered', 'int'),
 	newFieldArray('active', 'int'),
-    newFieldArray('dist_type', 'string', '', '', false, false)
+  newFieldArray('dist_type', 'string', '', '', false, false)
 );
 
 //initialize values
@@ -292,10 +292,11 @@ if ($arrVals['id'] > 0) {
 								<input name="lead_email_2" type="text" class="text" id="lead_email_2" value="<?php echo htmlspecialchars($arrVals['lead_email_2']); ?>" maxlength="100" />
 							</div>
 							<div class="formElementSet formElementSetText">
-								<label class="fieldlabel req" for="email_format">Send HTML E-mail?:</label>
+								<label class="fieldlabel req" for="email_format">Lead Format:</label>
 								<select class="text" name="email_format" id="email_format">
-									<option value="1" <?php echo (('1' == $arrVals['email_format']) ? 'selected="selected"' : ''); ?>>Yes</option>
-									<option value="0" <?php echo (('0' == $arrVals['email_format']) ? 'selected="selected"' : ''); ?>>No</option>
+									<option value="1" <?php echo (('1' == $arrVals['email_format']) ? 'selected="selected"' : ''); ?>>HTML E-mail</option>
+									<option value="0" <?php echo (('0' == $arrVals['email_format']) ? 'selected="selected"' : ''); ?>>Text E-mail</option>
+                  <option value="2" <?php echo (('2' == $arrVals['email_format']) ? 'selected="selected"' : ''); ?>>Granot XML</option>
 								</select>
 							</div>
 							<div class="formElementSet formElementSetText">

@@ -208,7 +208,7 @@ class send_mail
 				$sql .= " AND c.dayparting=1";
 				break;
 		}
-		
+
 		//2007-11-29 - per Steve - if "Any" is selected, only select carriers with BOTH
 		//types of transport
 		if($this->array['carrier_type']=='open')
@@ -512,8 +512,15 @@ $carriers_to_select = $ro[0];
 		$EmailFormat = $carrier_cont->fields['email_format'];
 		$subject = $this->title . " Request - Reference ID: {$this->lead_id}";
 		$date = date("F d, Y", strtotime(trim($this->array['move_date'])));
-		include(dirname(__FILE__).'/mailer.inc.php');
-		$this->mailer($lead_email_1, $subject, $email_str, $headers);
+    // Check here to see if we're dealing with an XML Gateway lead request
+    if ($EmailFormat < 2) {  // This is a normal HTML | Text lead.  Use normal processing.
+      include(dirname(__FILE__).'/mailer.inc.php');
+  		$this->mailer($lead_email_1, $subject, $email_str, $headers);
+    } else {  // This is an Granot XML API Gateway lead
+        include(dirname(__FILE__).'/../granot/GranotLeadPost.php');
+        $movingLeads = new GranotLeadPost($this->array, false, trim(str_replace(',', ' ', $lead_email_1)), $this->lead_id);
+        $movingLeads->postXMLLead();
+    }
 	}
 
 	function update_process($id){ // updates process and leads_remaining for each company

@@ -23,7 +23,7 @@ class mysqlt_driver_ADOConnection extends ADOConnection
 	{
 		$this->dbtype = 'mysqlt';
 		$this->dataProvider = 'mysql';
-	}
+  }
 
 	/**
 	 * Connection to database server and selected database
@@ -34,7 +34,6 @@ class mysqlt_driver_ADOConnection extends ADOConnection
 	function _connect($host = "", $username = "", $password = "", $database = "", $persistent, $forcenew)
 	{
 		if (!function_exists('mysql_connect')) return false;
-
 		$this->host = $host;
 		if (!empty($this->port)) $this->host .= ":" . $this->port;
 		$this->username = $username;

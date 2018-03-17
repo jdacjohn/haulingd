@@ -717,7 +717,8 @@
 <script src="js/jquery.colorbox-min.js"></script>
 <script src="js/jquery.waypoints.min.js"></script>
 <script src="js/jquery.parallax-1.1.3.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<!-- <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script> -->
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCK62oqRct1jmZ72wcYgLAkDr296MT8Oys&sensor=false&amp;libraries=places"></script>
 <script src="js/ubilabs-geocomplete-d026f14/jquery.geocomplete.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/custom.js"></script>

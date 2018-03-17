@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<AAA><BBB><custcode>93F6F0E40E79</custcode><leadno>~</leadno><servtypeid>102</servtypeid><firstname>GI</firstname><lastname>Joe</lastname><ocity>Texarkana</ocity><ostate>TX</ostate><ozip>75501</ozip><ocountry>~</ocountry><dcity>Kilgore</dcity><dstate>TX</dstate><dzip>75662</dzip><dcountry>~</dcountry><weight>~</weight><volume>~</volume><movesize>~</movesize><notes>Just a Test</notes><movedte>03/29/2018</movedte><movedte2>~</movedte2><email>bob@comeon.eileen</email><phone1>1234567890</phone1><phone2>~</phone2><cell>~</cell><source>haulingdepot.com</source><mincount>~</mincount><maxcount>~</maxcount><soldcount>~</soldcount><moverref>leads@granot.com</moverref><repnotes>~</repnotes><others1txt>~</others1txt><others1amt>~</others1amt><others2txt>~</others2txt><others2amt>~</others2amt><label>~</label></BBB></AAA>
+XML POST RESPONSE:200
+HTTP/1.1 200 OK
+Date: Fri, 09 Mar 2018 23:23:58 GMT
+Content-Type: text/html
+Content-Length: 0
+Connection: keep-alive
+Set-Cookie: __cfduid=d8b29ee45e963fd47fce576986e66ae881520637838; expires=Sat, 09-Mar-19 23:23:58 GMT; path=/; domain=.hellomoving.com; HttpOnly
+RequestId: 6356_171203FCACF6
+X-Powered-By: ASP.NET
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Server: cloudflare
+CF-RAY: 3f914ada8a077aca-MCI
+<?xml version="1.0"?>
+<AAA><BBB><custcode>93F6F0E40E79</custcode><leadno>~</leadno><servtypeid>101</servtypeid><firstname>~</firstname><lastname/><ocity/><ostate/><ozip/><ocountry>~</ocountry><dcity/><dstate/><dzip/><dcountry>~</dcountry><weight>~</weight><volume>~</volume><movesize>~</movesize><notes/><movedte/><movedte2>~</movedte2><email/><phone1/><phone2>~</phone2><cell>~</cell><source>haulingdepot.com</source><mincount>~</mincount><maxcount>~</maxcount><soldcount>~</soldcount><moverref>leads@granot.com</moverref><repnotes>~</repnotes><others1txt>~</others1txt><others1amt>~</others1amt><others2txt>~</others2txt><others2amt>~</others2amt><label>~</label></BBB></AAA>
+XML POST RESPONSE:200
+HTTP/1.1 200 OK
+Date: Fri, 16 Mar 2018 19:03:57 GMT
+Content-Type: text/html
+Content-Length: 0
+Connection: keep-alive
+Set-Cookie: __cfduid=d3200930c18893ced8cde9c28a6e33f371521227037; expires=Sat, 16-Mar-19 19:03:57 GMT; path=/; domain=.hellomoving.com; HttpOnly
+RequestId: 7228_E461B17988B2
+X-Powered-By: ASP.NET
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Server: cloudflare
+CF-RAY: 3fc97b97d9d27adc-MCI
+
+
+<?xml version="1.0"?>
+<AAA><BBB><custcode>93F6F0E40E79</custcode><leadno>~</leadno><servtypeid>101</servtypeid><firstname>~</firstname><lastname/><ocity/><ostate/><ozip/><ocountry>~</ocountry><dcity/><dstate/><dzip/><dcountry>~</dcountry><weight>~</weight><volume>~</volume><movesize>~</movesize><notes/><movedte/><movedte2>~</movedte2><email/><phone1/><phone2>~</phone2><cell>~</cell><source>haulingdepot.com</source><mincount>~</mincount><maxcount>~</maxcount><soldcount>~</soldcount><moverref/><repnotes>~</repnotes><others1txt>~</others1txt><others1amt>~</others1amt><others2txt>~</others2txt><others2amt>~</others2amt><label>~</label><leadNo/></BBB></AAA>
+XML POST RESPONSE:200
+HTTP/1.1 200 OK
+Date: Fri, 16 Mar 2018 19:16:49 GMT
+Content-Type: text/html
+Content-Length: 0
+Connection: keep-alive
+Set-Cookie: __cfduid=d6163bdb171b6a5504c64dc9bb8b8bf191521227809; expires=Sat, 16-Mar-19 19:16:49 GMT; path=/; domain=.hellomoving.com; HttpOnly
+RequestId: 12020_2C4155334740
+X-Powered-By: ASP.NET
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Server: cloudflare
+CF-RAY: 3fc98e6f6e687b12-MCI
+
+
+<?xml version="1.0"?>
+<AAA><BBB><custcode>93F6F0E40E79</custcode><leadno>~</leadno><servtypeid>101</servtypeid><firstname>~</firstname><lastname/><ocity/><ostate/><ozip/><ocountry>~</ocountry><dcity/><dstate/><dzip/><dcountry>~</dcountry><weight>~</weight><volume>~</volume><movesize>~</movesize><notes/><movedte/><movedte2>~</movedte2><email/><phone1/><phone2>~</phone2><cell>~</cell><source>haulingdepot.com</source><mincount>~</mincount><maxcount>~</maxcount><soldcount>~</soldcount><moverref>john@jdacsolutions.com, </moverref><repnotes>~</repnotes><others1txt>~</others1txt><others1amt>~</others1amt><others2txt>~</others2txt><others2amt>~</others2amt><label>~</label><leadNo>18686</leadNo></BBB></AAA>
+XML POST RESPONSE:200
+HTTP/1.1 200 OK
+Date: Fri, 16 Mar 2018 19:52:00 GMT
+Content-Type: text/html
+Content-Length: 0
+Connection: keep-alive
+Set-Cookie: __cfduid=db27b18f5f25521fa60bec73474ec01fb1521229920; expires=Sat, 16-Mar-19 19:52:00 GMT; path=/; domain=.hellomoving.com; HttpOnly
+RequestId: 6040_3CF29AC5C1EE
+X-Powered-By: ASP.NET
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Server: cloudflare
+CF-RAY: 3fc9c1fc59087abe-MCI
+
+
+<?xml version="1.0"?>
+<AAA><BBB><custcode>93F6F0E40E79</custcode><leadno>~</leadno><servtypeid>101</servtypeid><firstname>~</firstname><lastname/><ocity/><ostate/><ozip/><ocountry>~</ocountry><dcity/><dstate/><dzip/><dcountry>~</dcountry><weight>~</weight><volume>~</volume><movesize>~</movesize><notes/><movedte/><movedte2>~</movedte2><email/><phone1/><phone2>~</phone2><cell>~</cell><source>haulingdepot.com</source><mincount>~</mincount><maxcount>~</maxcount><soldcount>~</soldcount><moverref>john@jdacsolutions.com</moverref><repnotes>~</repnotes><others1txt>~</others1txt><others1amt>~</others1amt><others2txt>~</others2txt><others2amt>~</others2amt><label>~</label><leadNo>18689</leadNo></BBB></AAA>
+XML POST RESPONSE:200
+HTTP/1.1 200 OK
+Date: Fri, 16 Mar 2018 20:03:29 GMT
+Content-Type: text/html
+Content-Length: 0
+Connection: keep-alive
+Set-Cookie: __cfduid=d479133b2603edd6ce1c22ab766d9029e1521230609; expires=Sat, 16-Mar-19 20:03:29 GMT; path=/; domain=.hellomoving.com; HttpOnly
+RequestId: 8996_AC6C6F77EA44
+X-Powered-By: ASP.NET
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Server: cloudflare
+CF-RAY: 3fc9d2cc3c3b7ad6-MCI
+
+
+<?xml version="1.0"?>
+<AAA><BBB><custcode>93F6F0E40E79</custcode><leadno>18690</leadno><servtypeid>102</servtypeid><firstname>John</firstname><lastname>Test600</lastname><ocity>Bartlesville</ocity><ostate>OK</ostate><ozip>74006</ozip><ocountry>~</ocountry><dcity>Naples</dcity><dstate>TX</dstate><dzip>75568</dzip><dcountry>~</dcountry><weight>~</weight><volume>~</volume><movesize>~</movesize><notes>This is only a test for the XML API Gateway</notes><movedte>2018-03-17</movedte><movedte2>~</movedte2><email>john@arnoldsrule.com</email><phone1>1234567890</phone1><phone2>~</phone2><cell>~</cell><source>haulingdepot.com</source><mincount>~</mincount><maxcount>~</maxcount><soldcount>~</soldcount><moverref>john@jdacsolutions.com</moverref><repnotes>~</repnotes><others1txt>~</others1txt><others1amt>~</others1amt><others2txt>~</others2txt><others2amt>~</others2amt><label>~</label></BBB></AAA>
+XML POST RESPONSE:200
+HTTP/1.1 200 OK
+Date: Fri, 16 Mar 2018 20:09:22 GMT
+Content-Type: text/html
+Content-Length: 0
+Connection: keep-alive
+Set-Cookie: __cfduid=d90fb196628e9e0e9ac1b335c3603d8821521230962; expires=Sat, 16-Mar-19 20:09:22 GMT; path=/; domain=.hellomoving.com; HttpOnly
+RequestId: 9812_D39329649F1E
+X-Powered-By: ASP.NET
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Server: cloudflare
+CF-RAY: 3fc9db6a0a0a7ad6-MCI
+
+

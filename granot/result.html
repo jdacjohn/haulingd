@@ -1,0 +1,802 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>MOVING LEADS GATEWAY</title>
+<link rel="STYLESHEET" type="text/css" href="/html/util/css/granotCSS.css">
+<script type="text/javascript" src="/html/util/js/util.js"></script>
+<script type="text/javascript" src="/html/util/js/xml.js"></script>
+<script type="text/javascript" src="/html/util/js/granot.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+
+function sf() {
+	loadTopMenu();
+	loadSubMenu('topic5');
+	focusTopNav();
+
+	frm=document.theForm;
+
+	xmlLeadHigh=loadXML('/TESTLEADXML.lidgw?&XMLTYPE=HIGH');
+	xmlLeadLow=loadXML('/TESTLEADXML.lidgw?&XMLTYPE=LOW');
+
+	cleanTilde(xmlLeadHigh);
+	cleanTilde(xmlLeadLow);
+
+	cPAGEID="2115";
+	webLog();
+
+
+}
+
+function focusTopNav(){
+	topNav('topic5'); // moving software
+}
+
+//function valid(){
+	//  nServTypeId=document.getElementById("servtypeid").value;			
+	  //if ((nServTypeId != 101) &&  (nServTypeId != 102) && (nServTypeId != 104)){
+	  //	alert("Invalid service type");
+	  //	document.getElementById("servtypeid").value="";
+	  //	document.getElementById("servtypeid").focus();
+	 // 	return false;
+	//  }
+	 // return true;
+//}
+
+function viewLeadXML(cTYPE){
+	if(cTYPE=='HIGH')
+		window.open('/TESTLEADXML.lidgw?&XMLTYPE=HIGH')
+	else window.open('/TESTLEADXML.lidgw?&XMLTYPE=LOW');
+ }
+
+function postLEADHTTP(){ // HTTP
+
+	 cAPI_ID=document.getElementById('provref').value;
+	 cMOVERREFURL=document.getElementById('moverrefurl').value;
+	 if(cAPI_ID=='') cAPI_ID='E432CD67C51E'
+	frm.action='/LEADSGWHTTP.lidgw?&API_ID='+cAPI_ID+'&MOVERREF='+cMOVERREFURL;
+	frm.target="_blank"
+	frm.submit();
+	window.location.reload();
+}
+
+function postLEADXML(cTYPE){ // XML
+	 cAPI_ID=document.getElementById('provref').value;
+	 cMOVERREFURL=document.getElementById('moverrefurl').value;
+	 if(cAPI_ID=='') cAPI_ID='E432CD67C51E'
+
+	cUrl='/LEADSGWXML.lidgw?&API_ID='+cAPI_ID+'&MOVERREF='+cMOVERREFURL;
+
+	if (cTYPE=='HIGH'){		
+		recordToXml(xmlLeadHigh);
+		xmlResponse=postXML(xmlLeadHigh,cUrl);		
+	}
+	// this function copy element values (form or id) to the xml nodes
+
+	if (cTYPE=='LOW'){
+		 recordToXmlLow(xmlLeadLow);		 
+		 xmlResponse=postXML(xmlLeadLow,cUrl);
+	}
+	 window.location.reload();
+	// Response from server - High DTD
+	//alertXML(xmlResponse);
+	 //showXmlMsg(xmlResponse)
+	//2. post xml
+
+
+	//var xmlResponse=postXML(xmlLead,cUrl);
+	//alert(xmlResponse.xml);
+
+
+	//3. write response MSG from server
+	//cDivId='xmlMsg';
+	//xslMsg=loadXML('/html/util/xmlMsg.xsl');
+	//transformXSL(cDivId,xmlResponse,xslMsg);
+
+}
+
+</script>
+
+</head>
+<body onload="sf()" style="BACKGROUND: url('/html/website/images/main_bk.png') repeat-x;FONT-FAMILY: tahoma" leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<form name="theForm" method="post">
+<table border="0" width="974" cellspacing="0" cellpadding="0" align="center" >
+  <tr>
+	 <td height="79">
+	<img border="0" src="/html/website/images/logo.png" width="135" height="48"></td>
+  </tr>
+ <tr>
+	 <td height="31"><div id="divTopMenu"></div></td>
+  </tr>
+  <tr height="25">
+	 <td valign="top"><div id="divSubMenu"></div></td>
+  </tr>
+
+  <tr>
+	 <td>
+	<table border="0" width="100%" onmouseover="focusTopNav()">
+		<tr>
+			<td width="62%" valign="top"><font face="Tahoma" color="#254B72">Leads Posting Gateway</font></td>
+			<td width="2%" valign="top">&nbsp;</td>
+			<td width="12%" valign="top">&nbsp;</td>
+			<td width="18%" valign="top" align="right"><font size="2">Last Revised 
+			08-11-2015</font></td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+<b>Test Page for submitting moving leads in HTTP and XML (low level and 
+			high level DTD)&nbsp; </b> </td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+In this page you can test the Leads Posting Gateway. Please read the
+<a target="_blank" href="http://docs.google.com/View?id=dc9bddx5_10763jwtts">
+Developer guide</a>.</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4" height="23">
+&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+<u><b><font color="#800000">Gateway URL String</font></b></u></td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+<table border="0" width="100%">
+	<tr>
+		<td>HTTP&nbsp; URL</td>
+		<td><font size="2">Call our office for more information</font></td>
+	</tr>
+	<tr>
+		<td>XML URL</td>
+		<td><font size="2">Call our office for more information</font></td>
+	</tr>
+</table>
+			</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+<table border="0" width="100%">
+	<tr>
+		<td width="10%">API_ID</td>
+		<td width="25%">
+		  <input type="text" id="provref" name="PROVREF" value="E432CD67C51E" style="width:120" size="20"></td>
+		<td width="65%"><font size="2">Provider API ID: Test account -
+		<font color="#C90000">E432CD67C51E</font></font></td>
+	</tr>
+	<tr>
+		<td width="10%">MOVERREF</td>
+		<td width="25%">
+		  <input type="text" id="moverrefurl" name="MOVERREFURL" value="" style="width:250; height:19" size="20"></td>
+		<td width="65%"><font size="2">[Optional]&nbsp; - Direct distribution to 
+		Demo test account: leads@granot.com<br>
+			MOVERREF is part of the URL string</font><font size="1">.
+		It can be posted as QUERYSTRING (part of the URL) or posted within the 
+		FORM</font></td>
+	</tr>
+</table>
+			</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+<b><u><font color="#800000">Form / XML Body (Lead's Information)</font></u></b></td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+
+<table border="0" width="100%" cellspacing="3" cellpadding="3">
+	<tr>
+		<td width="48%" bgcolor="#CCCCCC" align="center"><b>HTTP</b></td>
+		<td width="50%" colspan="2" bgcolor="#CCCCCC" align="center"><b>XML</b></td>
+	</tr>
+	<tr>
+		<td width="48%" align="center">
+<input type="button" name="b1" id="b1" onclick="postLEADHTTP()" value="POST HTTP"></td>
+		<td width="32%" align="center">
+<input type="button" name="b2" id="b2" onclick="postLEADXML('LOW')" value="POST XML LOW"></td>
+		<td width="10%" align="center">
+<input type="button" name="b5" id="b6" onclick="postLEADXML('HIGH')" value="POST XML HIGH (DTD)"></td>
+	</tr>
+	<tr>
+		<td width="48%" align="center">&nbsp;</td>
+		<td width="32%" align="center"><font color="#000080" style="cursor:pointer" onclick="viewLeadXML('LOW')">View XML low
+		level type</font></td>
+		<td width="10%" align="center"><font color="#000080" style="cursor:pointer" onclick="viewLeadXML('HIGH')">View Xml High
+		Level Type</font></td>
+	</tr>
+	</table>
+
+					</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+
+<table border="1" width="100%" bordercolorlight="#CCCCCC" bordercolordark="#CCCCCC" style="border-collapse: collapse">
+	<tr>
+		<td width="10%">#</td>
+		<td width="30%">Field Name</td>
+		<td width="50%" height="0">Value</td>
+		<td width="10%">Type</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;1</td>
+		<td width="30%">&nbsp;servtypeid</td>
+			<td width="50%" height="0">
+				<input type="text" id="servtypeid" name="servtypeid" value="101.00" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;N</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;2</td>
+		<td width="30%">&nbsp;leadno</td>
+			<td width="50%" height="0">
+				<input type="text" id="leadno" name="leadno" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;3</td>
+		<td width="30%">&nbsp;firstname</td>
+			<td width="50%" height="0">
+				<input type="text" id="firstname" name="firstname" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;4</td>
+		<td width="30%">&nbsp;lastname</td>
+			<td width="50%" height="0">
+				<input type="text" id="lastname" name="lastname" value="test" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;5</td>
+		<td width="30%">&nbsp;ocity</td>
+			<td width="50%" height="0">
+				<input type="text" id="ocity" name="ocity" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;6</td>
+		<td width="30%">&nbsp;ostate</td>
+			<td width="50%" height="0">
+				<input type="text" id="ostate" name="ostate" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;7</td>
+		<td width="30%">&nbsp;ozip</td>
+			<td width="50%" height="0">
+				<input type="text" id="ozip" name="ozip" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;8</td>
+		<td width="30%">&nbsp;ocountry</td>
+			<td width="50%" height="0">
+				<input type="text" id="ocountry" name="ocountry" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;9</td>
+		<td width="30%">&nbsp;dcity</td>
+			<td width="50%" height="0">
+				<input type="text" id="dcity" name="dcity" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;10</td>
+		<td width="30%">&nbsp;dstate</td>
+			<td width="50%" height="0">
+				<input type="text" id="dstate" name="dstate" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;11</td>
+		<td width="30%">&nbsp;dzip</td>
+			<td width="50%" height="0">
+				<input type="text" id="dzip" name="dzip" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;12</td>
+		<td width="30%">&nbsp;dcountry</td>
+			<td width="50%" height="0">
+				<input type="text" id="dcountry" name="dcountry" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;13</td>
+		<td width="30%">&nbsp;weight</td>
+			<td width="50%" height="0">
+				<input type="text" id="weight" name="weight" value="0.00" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;N</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;14</td>
+		<td width="30%">&nbsp;volume</td>
+			<td width="50%" height="0">
+				<input type="text" id="volume" name="volume" value="0.00" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;N</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;15</td>
+		<td width="30%">&nbsp;movesize</td>
+			<td width="50%" height="0">
+				<input type="text" id="movesize" name="movesize" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;16</td>
+		<td width="30%">&nbsp;notes</td>
+			<td width="50%" height="0">
+				<input type="text" id="notes" name="notes" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;M</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;17</td>
+		<td width="30%">&nbsp;movedte</td>
+			<td width="50%" height="0">
+				<input type="text" id="movedte" name="movedte" value="12/12/2019" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;T</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;18</td>
+		<td width="30%">&nbsp;movedte2</td>
+			<td width="50%" height="0">
+				<input type="text" id="movedte2" name="movedte2" value="01/01/2001" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;T</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;19</td>
+		<td width="30%">&nbsp;email</td>
+			<td width="50%" height="0">
+				<input type="text" id="email" name="email" value="rob@test.com" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;20</td>
+		<td width="30%">&nbsp;phone1</td>
+			<td width="50%" height="0">
+				<input type="text" id="phone1" name="phone1" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;21</td>
+		<td width="30%">&nbsp;phone2</td>
+			<td width="50%" height="0">
+				<input type="text" id="phone2" name="phone2" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;22</td>
+		<td width="30%">&nbsp;cell</td>
+			<td width="50%" height="0">
+				<input type="text" id="cell" name="cell" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;23</td>
+		<td width="30%">&nbsp;source</td>
+			<td width="50%" height="0">
+				<input type="text" id="source" name="source" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;24</td>
+		<td width="30%">&nbsp;mincount</td>
+			<td width="50%" height="0">
+				<input type="text" id="mincount" name="mincount" value="0.00" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;N</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;25</td>
+		<td width="30%">&nbsp;maxcount</td>
+			<td width="50%" height="0">
+				<input type="text" id="maxcount" name="maxcount" value="0.00" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;N</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;26</td>
+		<td width="30%">&nbsp;soldcount</td>
+			<td width="50%" height="0">
+				<input type="text" id="soldcount" name="soldcount" value="0.00" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;N</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;27</td>
+		<td width="30%">&nbsp;moverref</td>
+			<td width="50%" height="0">
+				<input type="text" id="moverref" name="moverref" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;28</td>
+		<td width="30%">&nbsp;repnotes</td>
+			<td width="50%" height="0">
+				<input type="text" id="repnotes" name="repnotes" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;M</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;29</td>
+		<td width="30%">&nbsp;others1txt</td>
+			<td width="50%" height="0">
+				<input type="text" id="others1txt" name="others1txt" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;30</td>
+		<td width="30%">&nbsp;others1amt</td>
+			<td width="50%" height="0">
+				<input type="text" id="others1amt" name="others1amt" value="0.00" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;N</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;31</td>
+		<td width="30%">&nbsp;others2txt</td>
+			<td width="50%" height="0">
+				<input type="text" id="others2txt" name="others2txt" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;32</td>
+		<td width="30%">&nbsp;others2amt</td>
+			<td width="50%" height="0">
+				<input type="text" id="others2amt" name="others2amt" value="0.00" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;N</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;33</td>
+		<td width="30%">&nbsp;label</td>
+			<td width="50%" height="0">
+				<input type="text" id="label" name="label" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+
+	<tr>
+		<td width="10%">&nbsp;35</td>
+		<td width="30%">&nbsp;redirurl</td>
+			<td width="50%" height="0">
+				<input type="text" id="redirurl" name="REDIRURL" value="" style="width:300" size="20"></td>
+		<td width="10%">&nbsp;C</td>
+	</tr>
+</table>
+
+					</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+
+		<hr color="#808080" size="1">
+
+					</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4"><font color="#800000"><b>
+			<u>Auto Transport (HTTP Only) </u></b></font> </td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+			<table border="1" width="100%" bordercolorlight="#CCCCCC" bordercolordark="#CCCCCC" style="border-collapse: collapse">
+				<tr>
+					<td width="73">Make0</td>
+					<td>
+					<input type="text" name="MAKE0" id="make0" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				<tr>
+					<td width="73">Model0</td>
+					<td>
+					<input type="text" name="MODEL0" id="model0" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				<tr>
+					<td width="73">Year0</td>
+					<td>
+					<input type="text" name="YEAR0" id="year0" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				<tr>
+					<td width="73">Autotype0</td>
+					<td>
+					<input type="text" name="AUTOTYPE0" id="autotype0" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				<tr>
+					<td width="73">Running0</td>
+					<td>
+					<input type="text" name="RUNNING0" id="running0" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				<tr>
+					<td width="73">Make1</td>
+					<td>
+					<input type="text" name="MAKE1" id="make1" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				<tr>
+					<td width="73">Model1</td>
+					<td>
+					<input type="text" name="MODEL1" id="model1" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				<tr>
+					<td width="73">Year1</td>
+					<td>
+					<input type="text" name="YEAR1" id="year1" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				<tr>
+					<td width="73">Autotype1</td>
+					<td>
+					<input type="text" name="AUTOTYPE1" id="autotype1" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				<tr>
+					<td width="73">Running1</td>
+					<td>
+					<input type="text" name="RUNNING1" id="running1" style="width:150; height:22" tabindex="" value="" size="20"></td>
+				</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4"><font color="#800000"><b><u>After Posting</u></b></font></td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" height="5" colspan="4"></td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4"><b>Immediate response example:</b></td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+<table border="1" width="100%" bordercolorlight="#CCCCCC" bordercolordark="#CCCCCC" style="border-collapse: collapse">
+	<tr>
+		<td align="center"><b>HTTP Response</b></td>
+		<td align="center"><b>XML Response</b></td>
+	</tr>
+	<tr>
+		<td><b> 104360,13,missing client name</b><p><b>or<br>
+		<br>
+		104360,0,OK</b></td>
+		<td>
+
+		<font color="#0000FF">&lt;?xml version=&quot;1.0&quot;?&gt;</font><font color="#800000"><br>
+		-&nbsp; </font><font color="#0000FF">&lt;</font><font color="#800000">AAA</font><font color="#0000FF">&gt;</font><font color="#800000"><br>
+&nbsp;&nbsp; -&nbsp; </font><font color="#0000FF">&lt;</font><font color="#800000">BBB</font><font color="#0000FF">&gt;</font><font color="#800000"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>
+		<font color="#0000FF">&lt;</font><font color="#800000">leadid</font><font color="#0000FF">&gt;</font><b>104360</b><font color="#0000FF">&lt;/</font><font color="#800000">leadid</font><font color="#0000FF">&gt;</font><font color="#800000"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>
+		<font color="#0000FF">&lt;</font><font color="#800000">errid</font><font color="#0000FF">&gt;</font><b>13</b><font color="#0000FF">&lt;/</font><font color="#800000">errid</font><font color="#0000FF">&gt;</font><font color="#800000"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>
+		<font color="#0000FF">&lt;</font><font color="#800000">msg</font><font color="#0000FF">&gt;</font><b>missing
+		client name</b><font color="#0000FF">&lt;/</font><font color="#800000">msg</font><font color="#0000FF">&gt;</font><font color="#800000"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font color="#0000FF">&lt;/</font><font color="#800000">BBB</font><font color="#0000FF">&gt;</font><font color="#800000"><br>
+&nbsp;&nbsp; </font><font color="#0000FF">&lt;/</font><font color="#800000">AAA</font><font color="#0000FF">&gt;</font></td>
+	</tr>
+</table>
+			</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+
+		<hr color="#808080" size="1">
+
+			</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4"><font color="#800000"><u><b>Inventory</b></u></font></td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">After posting the lead's information, you can <a href="/TESTLEADINVPOSTING.lidgw?&LEADID=26690932">post 
+			the lead's inventory</a>.</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+
+		<hr color="#808080" size="1">
+
+					</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4"><b>Lead Type ID</b></td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+<table border="1" width="100%" bordercolorlight="#CCCCCC" bordercolordark="#CCCCCC" style="border-collapse: collapse">
+	<tr>
+		<td>101</td>
+		<td>Local lead (default selection when the move is <u>within a state</u>)</td>
+	</tr>
+	<tr>
+		<td>102</td>
+		<td>Long distance lead (default selection when the move is <u>between 
+		states</u>)</td>
+	</tr>
+	<tr>
+		<td>103</td>
+		<td>Auto transport lead</td>
+	</tr>
+	<tr>
+		<td>104</td>
+		<td>International lead (default selection when the move is <u>between 
+		countries</u>)</td>
+	</tr>
+</table>
+			</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4"><b>Error Messages</b></td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="58%" valign="top" colspan="4">
+<table border="1" width="100%" bordercolorlight="#CCCCCC" bordercolordark="#CCCCCC" style="border-collapse: collapse">
+	<tr>
+		<td><b>ERRID</b></td>
+		<td><b>MSG</b></td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>OK (no errors)</td>
+	</tr>
+	<tr>
+		<td>11</td>
+		<td>Missing provider's
+		<span style="font-size: 11.0pt; line-height: 115%; font-family: Verdana,sans-serif">
+		API_ID</span></td>
+	</tr>
+	<tr>
+		<td>12</td>
+		<td>Provider's reference does not exist in the system</td>
+	</tr>
+	<tr>
+		<td>13</td>
+		<td>Inactive provider</td>
+	</tr>
+	<tr>
+		<td>14</td>
+		<td>Missing client name</td>
+	</tr>
+	<tr>
+		<td>15</td>
+		<td>Missing contact information (phone and email)</td>
+	</tr>
+	<tr>
+		<td>16</td>
+		<td>Invalid move date</td>
+	</tr>
+	<tr>
+		<td>17</td>
+		<td>Missing 'from state' </td>
+	</tr>
+	<tr>
+		<td>18</td>
+		<td>Missing 'to state' </td>
+	</tr>
+	<tr>
+		<td>19</td>
+		<td>Invalid 'from state'</td>
+	</tr>
+	<tr>
+		<td>20</td>
+		<td>Invalid 'to state'</td>
+	</tr>
+	<tr>
+		<td>21</td>
+		<td>Missing country (international lead)</td>
+	</tr>
+	<tr>
+		<td>22</td>
+		<td>Inventory was not captured</td>
+	</tr>
+	<tr>
+		<td>23</td>
+		<td>Invalid lead Id when updating inventory</td>
+	</tr>
+	<tr>
+		<td>24</td>
+		<td>
+		<span style="font-size: 11.0pt; line-height: 115%; font-family: Verdana,sans-serif">
+		Empty post</span></td>
+	</tr>
+	<tr>
+		<td>25</td>
+		<td>
+		<span style="font-size: 11.0pt; line-height: 115%; font-family: Verdana,sans-serif">
+		Lead does not match minimum distribution</span></td>
+	</tr>
+	<tr>
+		<td>26</td>
+		<td>
+		Duplicate lead by email</td>
+	</tr>
+	<tr>
+		<td>27</td>
+		<td>
+		Mover was not found</td>
+	</tr>
+</table>
+
+			</td>
+		</tr>
+	</table>
+	</td>
+  </tr>
+  <tr>
+	 <td>&nbsp;</td>
+  </tr>
+</table>
+
+</form>
+</body>
+</ntml>
+
+
+Fatal error: Uncaught Error: Using $this when not in object context in C:\source\web\haulingd\granolt\GranoltLeadPost.php:37
+Stack trace:
+#0 {main}
+  thrown in C:\source\web\haulingd\granolt\GranoltLeadPost.php on line 37
+
+Fatal error: Uncaught Error: Using $this when not in object context in C:\source\web\haulingd\granolt\GranoltLeadPost.php:37
+Stack trace:
+#0 {main}
+  thrown in C:\source\web\haulingd\granolt\GranoltLeadPost.php on line 37

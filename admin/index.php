@@ -1,7 +1,7 @@
 <?php require_once('../_includes/project.inc.php'); ?>
 <?php
 require_login();
-
+$gDebug = true;
 $db = &connectToDB();
 if($gDebug) $db->debug = true;
 
@@ -22,25 +22,25 @@ if ($rs && !$rs->EOF)
 	$buy_more = $rs->fields['count'];
 else
 	$buy_more = 0;
-	
+
 $rs = $db->Execute('SELECT COUNT(l.id) as count FROM leads l RIGHT JOIN quotes q ON l.id = q.lead_id WHERE authenticated = 1 AND UNIX_TIMESTAMP(l.created_at) >= UNIX_TIMESTAMP(?) AND UNIX_TIMESTAMP(l.created_at) <= UNIX_TIMESTAMP(?)', array(date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')));
 if ($rs && !$rs->EOF)
 	$from_public = $rs->fields['count'];
 else
-	$from_public = 0;	
-	
+	$from_public = 0;
+
 $rs = $db->Execute('SELECT COUNT(l.id) as count FROM leads l RIGHT JOIN quotes q ON l.id = q.lead_id WHERE authenticated = 0 AND UNIX_TIMESTAMP(l.created_at) >= UNIX_TIMESTAMP(?) AND UNIX_TIMESTAMP(l.created_at) <= UNIX_TIMESTAMP(?)', array(date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')));
 if ($rs && !$rs->EOF)
 	$from_public_not_auth = $rs->fields['count'];
 else
-	$from_public_not_auth = 0;		
-	
+	$from_public_not_auth = 0;
+
 $rs = $db->Execute('SELECT COUNT(l.id) as count FROM leads l RIGHT JOIN quotes q ON l.id = q.lead_id WHERE authenticated = 1 AND UNIX_TIMESTAMP(l.created_at) >= UNIX_TIMESTAMP(?) AND UNIX_TIMESTAMP(l.created_at) <= UNIX_TIMESTAMP(?)', array(date('Y-m-d 00:00:00', mktime(0,0,0,date('m'),date('d')-30,date('Y'))), date('Y-m-d 23:59:59')));
 if ($rs && !$rs->EOF)
 	$from_public_30_days = $rs->fields['count'];
 else
 	$from_public_30_days = 0;
-	
+
 $rs = $db->Execute('SELECT COUNT(l.id) as count FROM leads l RIGHT JOIN quotes q ON l.id = q.lead_id WHERE authenticated = 0 AND UNIX_TIMESTAMP(l.created_at) >= UNIX_TIMESTAMP(?) AND UNIX_TIMESTAMP(l.created_at) <= UNIX_TIMESTAMP(?)', array(date('Y-m-d 00:00:00', mktime(0,0,0,date('m'),date('d')-30,date('Y'))), date('Y-m-d 23:59:59')));
 if ($rs && !$rs->EOF)
 	$from_public_30_days_not_auth = $rs->fields['count'];

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * ADOdb Lite is a PHP class to encapsulate multiple database APIs and is compatible with 
- * a subset of the ADODB Command Syntax. 
+ * ADOdb Lite is a PHP class to encapsulate multiple database APIs and is compatible with
+ * a subset of the ADODB Command Syntax.
  * Currently supports Frontbase, MaxDB, miniSQL, MSSQL, MSSQL Pro, MySQLi, MySQLt, MySQL, PostgresSQL,
  * PostgresSQL64, PostgresSQL7, PostgresSQL8, SqLite, SqLite Pro, Sybase and Sybase ASE.
- * 
+ *
  */
 
 if (!defined('_ADODB_LAYER'))
@@ -27,9 +27,9 @@ $ADODB_FETCH_MODE = ADODB_FETCH_DEFAULT;	// DEFAULT, NUM, ASSOC or BOTH. Default
 /**
  * Database connection
  * Usage: $db = new ADONewConnection('dbtype');
- * 
- * @access public 
- * @param string $dbtype 
+ *
+ * @access public
+ * @param string $dbtype
  */
 
 function &ADONewConnection( $dbtype = 'mysql', $modules = '' )
@@ -38,13 +38,10 @@ function &ADONewConnection( $dbtype = 'mysql', $modules = '' )
 	$false = false;
 
 	@include( ADODB_DIR . '/adodb.config.php' );
-
 	if (strpos($dbtype,'://')) {
 		$dsn_array = @parse_url(rawurldecode($dbtype));
-
 		if (!$dsn_array || !$dsn_array['scheme'])
 			return $false;
-
 		$dbtype = $dsn_array['scheme'];
 		$modules = (!empty($dsn_array['fragment'])) ? $dsn_array['fragment'] : $modules;
 	} else $dsn_array = array('scheme'=>'');
@@ -127,7 +124,6 @@ function &ADONewConnection( $dbtype = 'mysql', $modules = '' )
 		$dsn_array['user'] = isset($dsn_array['user']) ? $dsn_array['user'] : '';
 		$dsn_array['pass'] = isset($dsn_array['pass']) ? $dsn_array['pass'] : '';
 		$dsn_array['path'] = isset($dsn_array['path']) ? substr($dsn_array['path'], 1) : '';
-
 		$result = $object->_connect($dsn_array['host'], $dsn_array['user'], $dsn_array['pass'], $dsn_array['path'], $persistent, $forcenew);
 
 		if (!$result) return $false;
@@ -139,9 +135,9 @@ function &ADONewConnection( $dbtype = 'mysql', $modules = '' )
 /**
  * Alternative Database connection
  * Usage: $db = new NewADOConnection('dbtype');
- * 
- * @access public 
- * @param string $dbtype 
+ *
+ * @access public
+ * @param string $dbtype
  */
 
 function &NewADOConnection($dbtype='', $module = '' )
@@ -171,8 +167,8 @@ function &NewDataDictionary(&$connection, $dbtype=false)
  * Backwards compatible with ADOdb usage of NewPerfMonitor
  * Change to module basis for PerfMon mean we need only return a reference to $connection object.
  * Usage: $perf =& NewPerfMonitor($conn); - $perf is a reference to $conn
- * 
- * @access public 
+ *
+ * @access public
  * @param ADOConnection $connection
  * @param string $dbtype This is an optional parameter with no actual use in ADOdb-Lite; for BC only.
  */
@@ -222,8 +218,8 @@ class ADOConnection
 	/**
 	 * Returns floating point version number of ADOdb Lite
 	 * Usage: $db->Version();
-	 * 
-	 * @access public 
+	 *
+	 * @access public
 	 */
 
 	function Version()
@@ -235,8 +231,8 @@ class ADOConnection
 	/**
 	 * Returns true if connected to database
 	 * Usage: $db->IsConnected();
-	 * 
-	 * @access public 
+	 *
+	 * @access public
 	 */
 
 	function IsConnected()
@@ -249,58 +245,58 @@ class ADOConnection
 	/**
 	 * Normal Database connection
 	 * Usage: $result = $db->Connect('host', 'username', 'password', 'database');
-	 * 
-	 * @access public 
-	 * @param string $database 
-	 * @param string $host 
-	 * @param string $password 
-	 * @param string $username 
-	 * @param string $forcenew // private 
+	 *
+	 * @access public
+	 * @param string $database
+	 * @param string $host
+	 * @param string $password
+	 * @param string $username
+	 * @param string $forcenew // private
 	 */
 
 	function Connect( $host = "", $username = "", $password = "", $database = "", $forcenew = false)
 	{
 		return $this->_connect($host, $username, $password, $database, false, $forcenew);
-	} 
+	}
 
 	/**
 	 * Persistent Database connection
 	 * Usage: $result = $db->PConnect('host', 'username', 'password', 'database');
-	 * 
-	 * @access public 
-	 * @param string $database 
-	 * @param string $host 
-	 * @param string $password 
-	 * @param string $username 
+	 *
+	 * @access public
+	 * @param string $database
+	 * @param string $host
+	 * @param string $password
+	 * @param string $username
 	 */
 
 	function PConnect( $host = "", $username = "", $password = "", $database = "")
 	{
 		return $this->_connect($host, $username, $password, $database, true, false);
-	} 
+	}
 
 	/**
 	 * Force New Database connection
 	 * Usage: $result = $db->NConnect('host', 'username', 'password', 'database');
-	 * 
-	 * @access public 
-	 * @param string $database 
-	 * @param string $host 
-	 * @param string $password 
-	 * @param string $username 
+	 *
+	 * @access public
+	 * @param string $database
+	 * @param string $host
+	 * @param string $password
+	 * @param string $username
 	 */
 
 	function NConnect( $host = "", $username = "", $password = "", $database = "")
 	{
 		return $this->_connect($host, $username, $password, $database, false, true);
-	} 
+	}
 
 	/**
 	 * Returns SQL query and instantiates sql statement & resultset driver
 	 * Usage: $linkId =& $db->execute( 'SELECT * FROM foo ORDER BY id' );
-	 * 
-	 * @access public 
-	 * @param string $sql 
+	 *
+	 * @access public
+	 * @param string $sql
 	 * @return mixed Resource ID, Array
 	 */
 
@@ -315,17 +311,17 @@ class ADOConnection
 		}
 		$rs =& $this->do_query($sql, -1, -1, $inputarr);
 		return $rs;
-	} 
+	}
 
 	/**
 	 * Returns SQL query and instantiates sql statement & resultset driver
 	 * Usage: $linkId =& $db->SelectLimit( 'SELECT * FROM foo ORDER BY id', $nrows, $offset );
 	 *        $nrows and $offset are optional
-	 * 
-	 * @access public 
-	 * @param string $sql 
-	 * @param string $nrows 
-	 * @param string $offset 
+	 *
+	 * @access public
+	 * @param string $sql
+	 * @param string $nrows
+	 * @param string $offset
 	 * @return mixed Resource ID, Array
 	 */
 
@@ -333,12 +329,12 @@ class ADOConnection
 	{
 		$rs =& $this->do_query( $sql, $offset, $nrows, $inputarr);
 		return $rs;
-	} 
+	}
 
 	 /**
 	 * Display debug output and database error.
 	 *
-	 * @access private 
+	 * @access private
 	 */
 
 	function outp($text, $newline = true)
@@ -368,8 +364,8 @@ class ADOConnection
 
 /**
  * Empty result record set for updates, inserts, ect
- * 
- * @access private 
+ *
+ * @access private
  */
 
 class ADORecordSet_empty
@@ -383,7 +379,7 @@ class ADORecordSet_empty
 	function Close(){return true;}
 }
 
-class ADOFieldObject { 
+class ADOFieldObject {
 	var $name = '';
 	var $max_length=0;
 	var $type="";

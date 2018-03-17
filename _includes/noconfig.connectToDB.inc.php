@@ -64,7 +64,9 @@ function &_connectToDBURL($urlList) {
 			$url .= ((strpos($url, '?') === false) ? '?' : '&').'debug=1';
 			printvar(preg_replace('|^([^:]+)://([^:]+):[^@]+@|i','$1://$2:********@',$url),'Attempting to connect to:');
 		}
+        //echo "\n" . $url . "\n";
         $db = &ADONewConnection($url);
+        //echo "Return Value from ADONewConenction():  " . $db . "\n";
 		if (is_object($db)) return $db;
     }
 

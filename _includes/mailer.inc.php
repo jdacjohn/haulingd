@@ -60,7 +60,7 @@ if($EmailFormat==0){//if email format is text
      }
     $email_str.="Additional Comments:\n".
 		$this->array['comments']."\n";
-}else{
+}else{ // email format is HTML
 	$headers .= "MIME-Version: 1.0".EMAIL_SEPARATOR;
 	$headers .= "Content-type: text/html; charset=iso-8859-1".EMAIL_SEPARATOR;
 

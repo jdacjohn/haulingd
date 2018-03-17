@@ -5,7 +5,6 @@ require_once('_includes/noconfig.project.inc.php');
 ?>
 <?php
 //require_login();
-
 $db = &connectToDB();
 if($gDebug) $db->debug = true;
 
@@ -217,7 +216,7 @@ $result_authenticate = mysql_query($sql_authenticate) or die("Couldn't execute t
 //echo $result_authenticate;
 }
 
-header( 'Location: http://www.haulingdepot.com/confirm.php?passcode='.$password.'&email='.$arrVals['email'].'' ) ;
+header( 'Location: '. PROJECT_URL . '/confirm.php?passcode='.$password.'&email='.$arrVals['email'].'' ) ;
 }
 
 elseif (getParam('frmSubmit') != 'true') {
@@ -444,7 +443,7 @@ padding:5px;
 					 </td>
 					 <td colspan="3" align="center" valign="middle" bordercolor="#99CC66" bgcolor="#3A5E81">
 						  <div class="c1">
-							   <span class="c3"><a href="http://www.haulingdepot.com/">Home</a> | <a href="car_shipping.php">Auto</a> | <a href="boat_transport.php">Boat</a> | <a href="motorcycle_shipping.php">Motorcycle</a> | <a href="international_canadian.php">Canadian Shipping</a> | <a href="http://www.haulingdepot.com/international.php">International</a> | <a href="http://www.haulingdepot.com/contact.htm">Contact</a> |</span> <a href="about.htm">About</a>
+							   <span class="c3"><a href="<?php echo HOME_LINK; ?>">Home</a> | <a href="car_shipping.php">Auto</a> | <a href="boat_transport.php">Boat</a> | <a href="motorcycle_shipping.php">Motorcycle</a> | <a href="international_canadian.php">Canadian Shipping</a> | <a href="<?php echo HOME_LINK ?>international.php">International</a> | <a href="<?php echo HOME_LINK; ?>contact.htm">Contact</a> |</span> <a href="about.htm">About</a>
 
 						  </div>
 					 </td>

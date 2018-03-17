@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<AAA>
+  <BBB>
+    <custcode>93F6F0E40E79</custcode>
+    <leadno>~</leadno>
+    <servtypeid>102</servtypeid>
+    <firstname>JDAC</firstname>
+    <lastname>John</lastname>
+    <ocity>Bartlesville</ocity>
+    <ostate>Oklahoma</ostate>
+    <ozip>74006</ozip>
+    <ocountry>~</ocountry>
+    <dcity>Brownwood</dcity>
+    <dstate>Texas</dstate>
+    <dzip>76801</dzip>
+    <dcountry>~</dcountry>
+    <weight>~</weight>
+    <volume>~</volume>
+    <movesize>~</movesize>
+    <notes>DO NOT CALL.  TESTING PURPOSES ONLY</notes>
+    <movedte>2018-05-30T00:00:00</movedte>
+    <movedte2>~</movedte2>
+    <email>john@jdacsolutions.com</email>
+    <phone1>9188862681</phone1>
+    <phone2>~</phone2>
+    <cell>~</cell>
+    <source>haulingdepot.com</source>
+    <mincount>0</mincount>
+    <maxcount>0</maxcount>
+    <soldcount>0</soldcount>
+    <moverref>leads@granot.com</moverref>
+    <repnotes>~</repnotes>
+    <others1txt>~</others1txt>
+    <others1amt>0</others1amt>
+    <others2txt>~</others2txt>
+    <others2amt>0</others2amt>
+    <label>~</label>
+  </BBB>
+</AAA>

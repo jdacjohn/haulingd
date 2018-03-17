@@ -13,5 +13,6 @@ copy('configs/moving/config.inc.php', '_config/config.inc.php');
 
 sleep(2);
 
-header( 'Location: http://www.haulingdepot.com/admin/carriers.php' ) ;
+//header( 'Location: http://www.haulingdepot.com/admin/carriers.php' ) ;
+header( 'Location: http://haulingdepot.jdac.ddns.net/admin/carriers.php' ) ;
 ?>

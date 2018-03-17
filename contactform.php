@@ -4,7 +4,7 @@ require_once('_includes/noconfig.project.inc.php');
 ?>
 <?php
 //require_login();
-
+//$gDebug = true;
 $db = &connectToDB();
 if($gDebug) $db->debug = true;
 
@@ -115,7 +115,7 @@ $arrVars = array(
 	newFieldArray('contactmethod', 'text', '', '', false, false),
 	newFieldArray('comments', 'text', '', '', false, false),
 	newFieldArray('companyname', 'text', '', '', false, false),
-    newFieldArray('moving', 'checkbox', '', '', false, false),
+  newFieldArray('moving', 'checkbox', '', '', false, false),
 	newFieldArray('move_date', 'date', '', '', false, false)
 );
 
@@ -124,8 +124,10 @@ if (!isset($arrVals)) $arrVals = array();
 foreach ($arrVars as $var) {
 	$arrVals[$var[THE_VALUE]] = getParam($var[THE_VALUE], (bool) $var[FIELD_IS_ARRAY]);
 }
+
 if($gDebug) printvar($arrVals, 'arrVals');
 
+// Perform all form validation
 if (!isset($arrErr)) $arrErr = array();
 if (getParam('frmSubmit') == 'true') {
 	//check req'd data
@@ -133,18 +135,17 @@ if (getParam('frmSubmit') == 'true') {
 		$arrErr[] = form_error('Please enter the name of the customer.', 'customername', 'customer');
 	}
 
-
-		if (!(strlen(trim($arrVals['email']))) && !check_email(trim($arrVals['email']))) {
-			$arrErr[] = form_error('Please enter a valid email address.', 'email');
-		}
-        if (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", trim($arrVals['email']))){
-		        	$arrErr[] = form_error('Make sure the email you entered is valid.', 'email');
-		}
-        /*
-		if (!(strlen(trim($arrVals['phone']))) && !check_phone(trim($arrVals['phone']))) {
-			$arrErr[] = form_error('Please enter a valid 10-digit phone number. (i.e. 123-456-7890)', 'phone');
-		}
-       */
+  if (!(strlen(trim($arrVals['email']))) && !check_email(trim($arrVals['email']))) {
+    $arrErr[] = form_error('Please enter a valid email address.', 'email');
+	}
+  if (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", trim($arrVals['email']))){
+    $arrErr[] = form_error('Make sure the email you entered is valid.', 'email');
+  }
+  /*
+	if (!(strlen(trim($arrVals['phone']))) && !check_phone(trim($arrVals['phone']))) {
+	 $arrErr[] = form_error('Please enter a valid 10-digit phone number. (i.e. 123-456-7890)', 'phone');
+	}
+  */
 
 	if (!(strlen(trim($arrVals['vehicle_year'])) && is_numeric(trim($arrVals['vehicle_year'])))) {
 		$arrErr[] = form_error('Please enter a valid year for the primary vehicle. (ex: 1997, 97, 07, etc.)', 'vehicle_year', 'year');
@@ -206,30 +207,28 @@ if (getParam('frmSubmit') == 'true') {
 	if (!strlen(trim($arrVals['move_date'])) || strtotime(trim($arrVals['move_date'])) <= 0) {
 		$arrErr[] = form_error('Please enter a valid move date.', 'move_date', 'move date');
 	}
-		if($arrVals['phone']){
-	$phone_number_formatted = preg_replace("([()-])", "", $arrVals['phone']);
-	//echo $phone_number_formatted;
-	$area_code = substr($phone_number_formatted, 0, 3);
-	$prefix = substr($phone_number_formatted, 3, 3);
+
+	if($arrVals['phone']) {
+    $phone_number_formatted = preg_replace("([()-])", "", $arrVals['phone']);
+    //echo $phone_number_formatted;
+    $area_code = substr($phone_number_formatted, 0, 3);
+    $prefix = substr($phone_number_formatted, 3, 3);
     /*
-	$sql = 'SELECT * FROM areacodes WHERE area_code = '.$area_code.' AND prefix = '.$prefix;
-	$result = mysql_query($sql) or die("Couldn't execute that query.".mysql_error());
-	$num_rows = mysql_num_rows($result);
-	if($num_rows==0){
-		$arrErr[] = form_error('Please ensure you entered a correct area code and prefix.', 'phone','area code and prefix');
-	}
+    $sql = 'SELECT * FROM areacodes WHERE area_code = '.$area_code.' AND prefix = '.$prefix;
+    $result = mysql_query($sql) or die("Couldn't execute that query.".mysql_error());
+    $num_rows = mysql_num_rows($result);
+
+    if($num_rows==0) {
+      $arrErr[] = form_error('Please ensure you entered a correct area code and prefix.', 'phone','area code and prefix');
+    }
     */
-	//echo $sql;
-
-}
-
+    //echo $sql;
+  }
 }//end validation
-if ($gDebug) printvar($arrVals, 'arrVals');
 
 if (getParam('frmSubmit') == 'true' && sizeof($arrErr) == 0) {
-
-rename('_config/config.inc.php', '_config/temp.inc.php');
-copy('configs/vehicle/config.inc.php', '_config/config.inc.php');
+  rename('_config/config.inc.php', '_config/temp.inc.php');
+  copy('configs/vehicle/config.inc.php', '_config/config.inc.php');
 	//insert new record
 	$updateSQL['fields'] = "";
 	$updateSQL['values'] = "";
@@ -248,60 +247,49 @@ copy('configs/vehicle/config.inc.php', '_config/config.inc.php');
 			}
 		}
 	}
-
+  // Validation passed.  Insert the lead.
 	if (!$db->Execute('INSERT INTO leads ('.$updateSQL['fields'].', `updated_at`, `created_at`) VALUES ('.$updateSQL['values'].', NOW(), NOW())')) {
 		$arrErr[] = 'An error occured while while updating your data. Please try again.';
 	} else {
 
-
-		//redirect to next step
+    //redirect to next step
 		function createRandomPassword() {
+      $chars = "abcdefghijkmnopqrstuvwxyz023456789";
+      srand((double)microtime()*1000000);
+      $i = 0;
+      $pass = '' ;
 
-    $chars = "abcdefghijkmnopqrstuvwxyz023456789";
-    srand((double)microtime()*1000000);
-    $i = 0;
-    $pass = '' ;
-
-    while ($i <= 20) {
+      while ($i <= 20) {
         $num = rand() % 33;
         $tmp = substr($chars, $num, 1);
         $pass = $pass . $tmp;
         $i++;
+      }
+      return $pass;
     }
 
-    return $pass;
+    $password = createRandomPassword();
+    //$arrVals['move_date'] = date('m/d/Y', time()+86400);
+    $formatted_date = date_format(new DateTime($arrVals['move_date']), 'Y-m-d');
 
-}
+    $formatted_date_mysql = str_replace("/", "-",$arrVals['move_date']);
+    $formatted_date_mysql_split = preg_split("/-/", $formatted_date_mysql);
+    $formatted_date_mysql_final = $formatted_date_mysql_split[2]."-".$formatted_date_mysql_split[0]."-".$formatted_date_mysql_split[1];
+    //echo $formatted_date_mysql;
+    $sql_get_lead_id = "SELECT id FROM leads WHERE move_date = \"$formatted_date_mysql_final\" AND customername = \"$arrVals[customername]\" AND email = \"$arrVals[email]\"";
+    //echo $sql_get_lead_id;
+    $result_get_lead_id = mysql_query($sql_get_lead_id) or die("Couldn't execute that query.".mysql_error());
 
-$password = createRandomPassword();
-//$arrVals['move_date'] = date('m/d/Y', time()+86400);
-$formatted_date = date_format(new DateTime($arrVals['move_date']), 'Y-m-d');
+    while($row_get_lead_id = mysql_fetch_array($result_get_lead_id)) {
+      $lead_id = $row_get_lead_id[0];
+    }
+    $sql_authenticate = "INSERT INTO quotes (lead_id, passcode, email) VALUES ('".$lead_id."', '".$password."', '".$arrVals['email']."')";
+    //echo $sql_authenticate;
 
-
-
-$formatted_date_mysql = str_replace("/", "-",$arrVals['move_date']);
-$formatted_date_mysql_split = preg_split("/-/", $formatted_date_mysql);
-$formatted_date_mysql_final = $formatted_date_mysql_split[2]."-".$formatted_date_mysql_split[0]."-".$formatted_date_mysql_split[1];
-//echo $formatted_date_mysql;
-$sql_get_lead_id = "SELECT id FROM leads WHERE move_date = \"$formatted_date_mysql_final\" AND customername = \"$arrVals[customername]\" AND email = \"$arrVals[email]\"";
-
-//echo $sql_get_lead_id;
-
-$result_get_lead_id = mysql_query($sql_get_lead_id) or die("Couldn't execute that query.".mysql_error());
-
-while($row_get_lead_id = mysql_fetch_array($result_get_lead_id)){
-	$lead_id = $row_get_lead_id[0];
-}
-$sql_authenticate = "INSERT INTO quotes (lead_id, passcode, email) VALUES ('".$lead_id."', '".$password."', '".$arrVals['email']."')";
-
-//echo $sql_authenticate;
-
-$result_authenticate = mysql_query($sql_authenticate) or die("Couldn't execute that query.".mysql_error());
-}
-header( 'Location: http://www.haulingdepot.com/confirm.php?passcode='.$password.'&email='.$arrVals['email'].'' ) ;
-}
-
-elseif (getParam('frmSubmit') != 'true') {
+    $result_authenticate = mysql_query($sql_authenticate) or die("Couldn't execute that query.".mysql_error());
+  }
+  header( 'Location: ' . PROJECT_URL .'/confirm.php?passcode='.$password.'&email='.$arrVals['email'].'' ) ;
+} elseif (getParam('frmSubmit') != 'true') {
 	//set default date
 	$arrVals['move_date'] = date('m/d/Y', time()+86400);
 } //END: if (getParam('frmSubmit') == 'true' && sizeof($arrErr) == 0))
@@ -319,7 +307,7 @@ elseif (getParam('frmSubmit') != 'true') {
 <meta name="Description" content="Get 5 Vehicle Shipping Quotes & Save Time and Money on Car Shipping. Instant Auto Transport Quotes Up To 50% Off Standard Rates. Call 877-619-0710">
 <meta name="keywords" content="auto shipping quotes, car transport, car shipping, auto transport, car transporters, motorcycle shipping, auto transporters, car shippers, car shipping quotes, vehicle shipping quotes, auto shippers, car hauling, vehicle transport, motorcycle transport">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><meta name="robots" content="index,follow">
-<link rel="canonical" href="http://www.haulingdepot.com/" />
+<link rel="canonical" href="<?php echo PROJECT_URL; ?>" />
 
 	<link type="image/x-icon" href="img/favicon.ico" rel="shortcut icon">
 	<link rel="stylesheet" href="css/bootstrap.css">
